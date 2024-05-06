@@ -1,6 +1,6 @@
 import os
 from os.path import join, dirname
-from dotenv import load
+from dotenv import load_dotenv
 from pymongo import MongoClient
 import jwt
 import datetime
@@ -8,6 +8,9 @@ import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 MONGODB_CONNECTION_STRING = os.environ.get("MONGODB_CONNECTION_STRING")
 DB_NAME =  os.environ.get("DB_NAME")
